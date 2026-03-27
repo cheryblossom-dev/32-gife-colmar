@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: sans-serif; /*  เติม font พื้นฐานเพื่อให้ดูง่าย */
+}
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  padding-left: 24px;
+  padding-right: 24px;
+  flex-shrink: 0;
+}
+.logobox {
+  display: flex;
+  align-items: center;
+}
+.logobox img {
+  height: 32px;
+  width: auto;
+}
+
+.menubox {
+  display: flex;
+  gap: 16px;
+}
+.menubox a {
+  text-decoration: none; /*  ลบเส้นใต้ลิงก์ */
+  color: black;
+}
+
+/* สไตล์ของ Mobile Menu ตอนอยู่จอใหญ่ */
+.menud {
+  display: none; /* ซ่อนไว้ก่อนเมื่อดูบนจอคอม */
+}
+.menud nav {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
+.menud a svg {
+  height: 32px; /* กำหนดความสูงของไอคอน SVG */
+  width: auto;
+  fill: black; /*  กำหนดสีไอคอน */
+}
+
+.container2 {
+  background-color: lightgrey;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+
+  padding: 32px 24px; /*  บนล่าง 32 ซ้ายขวา 24 */
+  gap: 32px; /*  ระยะรูปกับข้อความ */
+}
+
+.banner img {
+  width: 100%;
+  display: block;
+}
+
+.content {
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.content h1,
+.content p {
+  margin: 0;
+}
+.start {
+  background-color: #333; /*  เปลี่ยนสีเข้ม */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* 
+         📱 โหมดหน้าจอมือถือ (กว้างไม่เกิน 768px)
+*/
+@media (max-width: 768px) {
+  /* --- 1. จัดการ Header (.container1) --- */
+  .menubox {
+    display: none; /* ซ่อนเมนูตัวหนังสือ (Desktop) */
+  }
+  .logobox {
+    display: none; /* ซ่อนโลโก้และชื่อ (Desktop) */
+  }
+  .container1 {
+    padding-left: 0;
+    padding-right: 0;
+    height: auto; /*  ให้ความสูงปรับตามเนื้อหา */
+  }
+
+  /* เปิดโชว์ Mobile Menu และแก้ไขชื่อ class ให้ตรงกัน */
+  .menud {
+    display: flex;
+    width: 100%;
+    padding: 16px 0; /*  เพิ่ม padding บนล่างให้ไอคอน */
+  }
+
+  /* --- 2. สลับ Layout ซ้าย-ขวา เป็น บน-ล่าง --- */
+  .container2 {
+    flex-direction: column;
+    padding: 0;
+  }
+  .banner {
+    width: 100%;
+  }
+
+  /* --- 3. จัดระยะห่างตาม Blueprint --- */
+  .content {
+    width: 100%;
+    padding: 32px 16px; /*  บุนวมซ้ายขวา 16px และบน 32px */
+    align-items: start; /*  ให้ข้อความชิดซ้าย */
+    gap: 0; /* ล้าง gap เดิมออกเพื่อจัดระยะ margin เอง */
+  }
+  .content h1 {
+    font-size: 32px !important; /*  ปรับขนาดหัวข้อให้เล็กลงในมือถือ */
+    margin-bottom: 32px; /* ระยะห่าง h1 -> p = 32px */
+  }
+  .content p {
+    font-size: 18px !important; /*  ปรับขนาดเนื้อหาให้เล็กลงในมือถือ */
+    margin-bottom: 24px; /* ระยะห่าง p -> button = 24px */
+  }
+  .start {
+    width: 100%; /*  ปุ่มกว้างเต็มจอในมือถือ */
+    margin-bottom: 32px; /* ระยะห่างใต้ปุ่ม = 32px */
+  }
+
+  /*หน้าแรก*/
+}
+.container22 {
+  display: flex;
+  padding: 0px 24px;
+  min-height: 100vh;
+  gap: 24px; /* 2. เว้นระยะห่างระหว่างกลุ่ม 60% กับ 40% ให้ห่างกัน 32px */
+  align-items: flex-start; /* ให้ทุกอย่างเริ่มจากด้านบน */
+  background-color: white;
+}
+/* ฝั่งซ้าย (60%) */
+.information-main {
+  flex: 0 0 60%; /* บังคับให้กว้างแค่ 60% เท่านั้น */
+}
+.information-main img {
+  width: 100%; /* ให้รูปขยายเต็มพื้นที่ 60% ของมัน */
+  display: block;
+  margin-top: 32px; /* ระยะห่างจากขอบบนตาม Blueprint */
+}
+.content23 {
+  flex: 0 0 40%; /* บังคับกว้าง 40% */
+  display: flex;
+  flex-direction: column;
+
+  /* --- แก้ไขตรงนี้เพื่อให้ห่างจากขอบ/เส้นแนวตั้ง --- */
+  padding-left: 32px; /* ดันเนื้อหาทั้งหมดให้ห่างจากเส้นแบ่งแนวตั้ง 32px */
+  border-left: 1px solid #ddd; /* สร้างเส้นแนวตั้งบางๆ */
+  padding-top: 32px;
+}
+.text1,
+.text2,
+.text3 {
+  display: flex; /*  ทำให้รูปกับข้อความอยู่ข้างกัน */
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: center; /* จัดแนวให้ดูสวย */
+}
+.text1 img,
+.text2 img,
+.text3 img {
+  width: 35%; /* รูปเล็กประมาณนี้ */
+  height: auto;
+}
+.text1,
+.text2,
+.text3 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 16px;
+}
